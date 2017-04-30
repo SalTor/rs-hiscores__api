@@ -1,0 +1,32 @@
+{
+  "name": "y",
+  "version": "0.0.1",
+  "description": "The API for the rs-hiscores project(s) I create.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --watch source/js --ignore source/js/app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/SalTor/rs-hiscores__api.git"
+  },
+  "keywords": [
+    "runescape",
+    "oldschool",
+    "osrs"
+  ],
+  "author": "Sal Torcivia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SalTor/rs-hiscores__api/issues"
+  },
+  "homepage": "https://github.com/SalTor/rs-hiscores__api#readme",
+  "dependencies": {
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "lodash": "^4.17.4",
+    "path": "^0.12.7",
+    "runescape-api": "^1.0.9"
+  }
+}
