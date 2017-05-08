@@ -13,7 +13,9 @@ router.get('/:username', function (req, res) {
 
     api.osrs.hiscores.player(username)
         .then(response => {
-            res.send({ stats: format(response) }).status(200)
+            let { stats, closest } = format(response)
+
+            res.send({ stats, closest }).status(200)
         })
         .catch(() => {
             res.status(404).send("Error with API, check with administrator.")

@@ -170,6 +170,8 @@ module.exports = function (stats) {
         }
     })
 
+    let closest_3_to_leveling = _.take(_.orderBy(_.filter(modified_stats, stat => stat.experience_to_level !== 0), ["level_progress"], ["desc"]), 3)
+
     overall.combat_level = calc_cb(_.filter(stats, index => index.skill.match(combatFilter)))
     overall.level = _.sum(_.map(modified_stats, "level"))
     overall.virtual_level = _.sum(_.map(modified_stats, "virtual_level"))
@@ -177,5 +179,5 @@ module.exports = function (stats) {
 
     modified_stats.unshift(overall)
 
-    return modified_stats
+    return { stats: modified_stats, closest: closest_3_to_leveling }
 }
