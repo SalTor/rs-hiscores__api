@@ -1,6 +1,8 @@
 # RuneScape Hiscores - API
 This is the API for the rs-hiscores project(s) I create.
 
+It makes use of the [runescape-api](https://github.com/Joshua-F/runescape-api) node package, put together by Joshua-F
+
 ## Disclaimer
 - I do not claim to own any information related to RuneScape.
   - This includes info. in the hiscores response as well as info. not included in the original hiscores response.
