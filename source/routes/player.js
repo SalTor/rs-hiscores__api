@@ -1,25 +1,35 @@
-'use strict'
+const add_details = require('../helpers/add_details')
+const api = require('runescape-api')
+const express = require('express')
+const { keys, values: vals } = require('lodash')
+const router = express.Router()
 
-let format = require("../helpers/format_response.js")
-
-let api = require('runescape-api'),
-    express = require('express'),
-    router = express.Router()
-
-router.get('/:username', function (req, res) {
-    let username = req.params.username
-
-    console.log(`[ username requested ] ${username}`)
+module.exports = router.get('/:username', ({ params }, res) => {
+    const { username } = params
+    console.log(`[ username requested ] ${ username }`)
 
     api.osrs.hiscores.player(username)
-        .then(response => {
-            let { stats, closest } = format(response)
+        .then((response) => {
+            const formatted_response = (response) => {
+                try {
+                    const skill_stats = vals(response.skills)
+                    const skill_names = keys(response.skills)
 
-            res.send({ stats, closest }).status(200)
+                    return add_details(
+                        skill_stats.map((current_stat, index) => {
+                            return Object.assign({}, { skill: skill_names[index] }, current_stat)
+                        })
+                    )
+                } catch (error) {
+                    console.log(error)
+
+                    return {}
+                }
+            }
+
+            res.send(formatted_response(response)).status(200)
         })
-        .catch(() => {
-            res.status(404).send("Error with API, check with administrator.")
-        })
+        .catch(() =>
+            res.status(404).send('Error with API, check with administrator.')
+        )
 })
-
-module.exports = router
