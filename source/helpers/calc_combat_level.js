@@ -1,17 +1,25 @@
+const { max } = require('lodash')
+
 module.exports = function (stats) {
-    let _ = require("lodash")
+    const skill = (skill) => stats.filter((s) => s.skill === skill)
 
-    function find(skill) {
-        return _.find(stats, stat => stat.skill === skill)
-    }
+    const [attack]    = skill('attack')
+    const [strength]  = skill('strength')
+    const [defence]   = skill('defence')
+    const [hitpoints] = skill('hitpoints')
+    const [ranged]    = skill('ranged')
+    const [magic]     = skill('magic')
+    const [prayer]    = skill('prayer')
 
-    let attack = find("attack"),
-        strength = find("strength"),
-        defence = find("defence"),
-        hitpoints = find("hitpoints"),
-        ranged = find("ranged"),
-        magic = find("magic"),
-        prayer = find("prayer")
-
-    return (0.25 * (defence.level + hitpoints.level + _.floor(prayer.level / 2)) + _.max([0.325 * (attack.level + strength.level), _.max([0.325 * (_.floor(ranged.level / 2) + ranged.level), 0.325 * (_.floor(magic.level  / 2) + magic.level)])])).toFixed(2)
+    return (
+        0.25 * (defence.level + hitpoints.level + Math.floor(prayer.level / 2))
+        +
+        max([
+            0.325 * (attack.level + strength.level),
+            max([
+                0.325 * (Math.floor(ranged.level / 2) + ranged.level),
+                0.325 * (Math.floor(magic.level / 2) + magic.level)
+            ])
+        ])
+    ).toFixed(2)
 }
