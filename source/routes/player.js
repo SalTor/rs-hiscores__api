@@ -19,7 +19,7 @@ module.exports = router.get('/:username', ({ params }, res) => {
                             return Object.assign({}, { skill: skill_names[index] }, current_stat)
                         })
                     )
-                } catch  {
+                } catch (error) {
                     return {}
                 }
             }
