@@ -4,8 +4,9 @@
   "description": "The API for the rs-hiscores project(s) I create.",
   "main": "index.js",
   "scripts": {
-    "test": "eslint index.js source",
-    "dev": "nodemon --watch index.js --watch ./source"
+    "test": "jest",
+    "clean": "eslint --fix index.js source",
+    "start": "nodemon --watch index.js --watch ./source"
   },
   "repository": {
     "type": "git",
@@ -23,19 +24,19 @@
   },
   "homepage": "https://github.com/SalTor/rs-hiscores__api#readme",
   "dependencies": {
-    "cors": "^2.8.4",
-    "express": "^4.16.2",
-    "lodash": "^4.17.4",
-    "runescape-api": "^1.0.9"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "lodash": "^4.17.15",
+    "runescape-api": "^2.1.0"
   },
   "devDependencies": {
-    "eslint": "^4.12.1",
-    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint": "^7.1.0",
+    "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "jest": "^21.2.1",
-    "nodemon": "^1.12.1"
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.4"
   }
 }

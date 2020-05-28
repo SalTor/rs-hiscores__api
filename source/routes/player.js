@@ -1,14 +1,13 @@
 const add_details = require('../helpers/add_details')
-const api = require('runescape-api')
+const { hiscores } = require('runescape-api/osrs')
 const express = require('express')
 const { keys, values: vals } = require('lodash')
 const router = express.Router()
 
 module.exports = router.get('/:username', ({ params }, res) => {
     const { username } = params
-    console.log(`[ username requested ] ${ username }`)
 
-    api.osrs.hiscores.player(username)
+    hiscores.getPlayer(username)
         .then((response) => {
             const formatted_response = (response) => {
                 try {
@@ -20,16 +19,12 @@ module.exports = router.get('/:username', ({ params }, res) => {
                             return Object.assign({}, { skill: skill_names[index] }, current_stat)
                         })
                     )
-                } catch (error) {
-                    console.log(error)
-
+                } catch  {
                     return {}
                 }
             }
 
-            res.send(formatted_response(response)).status(200)
+            res.status(200).send(formatted_response(response))
         })
-        .catch(() =>
-            res.status(404).send('Error with API, check with administrator.')
-        )
+        .catch((error) => res.status(404).send('Error with API, check with administrator.'))
 })

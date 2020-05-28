@@ -1,5 +1,6 @@
+const maxExperience = 200000000
 module.exports = exports = {
-    max_experience: 200000000,
+    maxExperience,
     levels: [
         { level: 1, exp: 0 },
         { level: 2, exp: 83 },
@@ -127,6 +128,6 @@ module.exports = exports = {
         { level: 124, exp: 154948977 },
         { level: 125, exp: 171077457 },
         { level: 126, exp: 188884740 },
-        { level: 127, exp: this.max_experience }
+        { level: 127, exp: maxExperience }
     ]
 }

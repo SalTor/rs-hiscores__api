@@ -5,58 +5,46 @@ describe('Modify default response from API...', () => {
         const new_stats = add_details([
             {
                 skill: 'overall',
-                level: 34,
-                exp: 1154
+                level: 16,
+                experience: 1154
             },
             {
                 level: 10,
-                exp: 1154,
-                skill: 'hitpoints'
+                experience: 1154,
+                skill: 'constitution'
             },
-            { level: 1, exp: 0, skill: 'attack'   },
-            { level: 1, exp: 0, skill: 'strength' },
-            { level: 1, exp: 0, skill: 'defence'  },
-            { level: 1, exp: 0, skill: 'ranged'   },
-            { level: 1, exp: 0, skill: 'magic'    },
-            { level: 1, exp: 0, skill: 'prayer'   }
+            { level: 1, experience: 0, skill: 'attack'   },
+            { level: 1, experience: 0, skill: 'strength' },
+            { level: 1, experience: 0, skill: 'defence'  },
+            { level: 1, experience: 0, skill: 'ranged'   },
+            { level: 1, experience: 0, skill: 'magic'    },
+            { level: 1, experience: 0, skill: 'prayer'   }
         ])
 
-        expect(new_stats).toEqual({
-            closest: [
-                {
-                    skill: 'hitpoints',
-                    virtual_level: 10,
-                    level: 10,
-                    exp: 1154,
-                    exp_to_level: 204,
-                    level_progress: 0
-                },
-                { level: 1, exp: 0, skill: 'attack',   virtual_level: 1, exp_to_level: 83, level_progress: 0 },
-                { level: 1, exp: 0, skill: 'strength', virtual_level: 1, exp_to_level: 83, level_progress: 0 }
-            ],
+        expect(new_stats).toMatchObject({
             stats: [
                 {
-                    skill: 'hitpoints',
+                    skill: 'constitution',
                     virtual_level: 10,
                     level: 10,
-                    exp: 1154,
+                    experience: 1154,
                     exp_to_level: 204,
                     level_progress: 0
                 },
-                { level: 1, exp: 0, skill: 'attack',   virtual_level: 1, exp_to_level: 83, level_progress: 0 },
-                { level: 1, exp: 0, skill: 'strength', virtual_level: 1, exp_to_level: 83, level_progress: 0 },
-                { level: 1, exp: 0, skill: 'defence',  virtual_level: 1, exp_to_level: 83, level_progress: 0 },
-                { level: 1, exp: 0, skill: 'ranged',   virtual_level: 1, exp_to_level: 83, level_progress: 0 },
-                { level: 1, exp: 0, skill: 'magic',    virtual_level: 1, exp_to_level: 83, level_progress: 0 },
-                { level: 1, exp: 0, skill: 'prayer',   virtual_level: 1, exp_to_level: 83, level_progress: 0 },
-                {
-                    skill: 'overall',
-                    virtual_level: 16,
-                    level: 16,
-                    combat_level: '3.40',
-                    exp: 1154
-                }
-            ]
+                { level: 1, experience: 0, skill: 'attack',   virtual_level: 1, exp_to_level: 83, level_progress: 0 },
+                { level: 1, experience: 0, skill: 'strength', virtual_level: 1, exp_to_level: 83, level_progress: 0 },
+                { level: 1, experience: 0, skill: 'defence',  virtual_level: 1, exp_to_level: 83, level_progress: 0 },
+                { level: 1, experience: 0, skill: 'ranged',   virtual_level: 1, exp_to_level: 83, level_progress: 0 },
+                { level: 1, experience: 0, skill: 'magic',    virtual_level: 1, exp_to_level: 83, level_progress: 0 },
+                { level: 1, experience: 0, skill: 'prayer',   virtual_level: 1, exp_to_level: 83, level_progress: 0 },
+            ],
+            overall: {
+                skill: 'overall',
+                virtual_level: 16,
+                level: 16,
+                combat_level: '3.40',
+                experience: 1154,
+            },
         })
     })
 })
